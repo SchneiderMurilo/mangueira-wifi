@@ -60,7 +60,7 @@ export function Anatomy() {
         </div>
         <div className="anatomy">
           <div className="anatomy-image">
-            <img src="/assets/nozzle-product.png" alt="Bocal" />
+            <img src="/assets/farmer-nozzle.png" alt="Bocal" />
           </div>
           <div className="spec-list">
             {specs.map((s, i) => (

@@ -87,7 +87,7 @@ export function Hero() {
           <div className="orbit"></div>
           <div className="orbit o-2"></div>
           <div className="orbit o-3"></div>
-          <img src="/assets/nozzle-product.png" alt="Bocal Mangueira Wi-Fi" />
+          <img src="/assets/hero-nozzle.png" alt="Bocal Mangueira Wi-Fi" />
           <div className="hero-callouts">
             <div className="callout callout-tl">Antena · 1.2 GHz</div>
             <div className="callout callout-tr">Bocal modular</div>

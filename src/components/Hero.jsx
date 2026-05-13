@@ -18,6 +18,7 @@ export function Nav() {
         <div className="nav-links">
           <a href="#produto">Produto</a>
           <a href="#painel">Painel</a>
+          <a href="#veda-rosca">Veda Rosca</a>
           <a href="#funciona">Como funciona</a>
           <a href="#mercados">Mercados</a>
           <a href="#roadmap">Roadmap</a>

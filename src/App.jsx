@@ -1,6 +1,7 @@
 import { Nav, Hero } from './components/Hero';
 import { Problem, Anatomy } from './components/Product';
 import { Dashboard } from './components/Dashboard';
+import { Leaks } from './components/Leaks';
 import { HowItWorks, Differential, Roadmap, Markets, CTA, Footer } from './components/Sections';
 
 export default function App() {
@@ -11,6 +12,7 @@ export default function App() {
       <Problem />
       <Anatomy />
       <Dashboard />
+      <Leaks />
       <HowItWorks />
       <Differential />
       <Roadmap />

@@ -1,4 +1,5 @@
 import { Drop, Thermo, Gauge, Pin, Satellite, Sun, Valve } from './Icons';
+import { WorldMap } from './WorldMap';
 
 export function Problem() {
   const stats = [
@@ -29,6 +30,8 @@ export function Problem() {
             </div>
           ))}
         </div>
+
+        <WorldMap />
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
-/* Dashboard / Painel ao vivo */
+import { useState, useEffect, useMemo } from 'react';
+import { Drop, Thermo, Gauge, Activity } from './Icons';
 
 function FarmMap({ activeSector, sectors, hoveredSector, onHover, onSelect }) {
-  // 800x600 viewbox
   return (
     <svg className="map-svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
       <defs>
@@ -25,7 +25,6 @@ function FarmMap({ activeSector, sectors, hoveredSector, onHover, onSelect }) {
       <rect width="800" height="600" fill="url(#grid-fine)"/>
       <rect width="800" height="600" fill="url(#grid-coarse)"/>
 
-      {/* River / contour line */}
       <path
         d="M 0 380 Q 150 350, 300 390 T 600 410 T 800 380"
         fill="none"
@@ -41,7 +40,6 @@ function FarmMap({ activeSector, sectors, hoveredSector, onHover, onSelect }) {
         strokeDasharray="2 4"
       />
 
-      {/* Mesh connection lines between sectors */}
       {sectors.map((s, i) => {
         const next = sectors[(i + 1) % sectors.length];
         return (
@@ -56,7 +54,6 @@ function FarmMap({ activeSector, sectors, hoveredSector, onHover, onSelect }) {
         );
       })}
 
-      {/* Sectors */}
       {sectors.map((s, i) => {
         const isActive = i === activeSector;
         const isHover = i === hoveredSector;
@@ -66,7 +63,6 @@ function FarmMap({ activeSector, sectors, hoveredSector, onHover, onSelect }) {
              onMouseLeave={() => onHover(null)}
              onClick={() => onSelect(i)}
              style={{ cursor: 'pointer' }}>
-            {/* Pulse rings on active */}
             {isActive && (
               <>
                 <circle cx={s.cx} cy={s.cy} r="50"
@@ -81,7 +77,6 @@ function FarmMap({ activeSector, sectors, hoveredSector, onHover, onSelect }) {
                 </circle>
               </>
             )}
-            {/* Sector polygon */}
             <polygon
               points={s.points}
               fill={isActive ? "url(#sector-active)" : (isHover ? "rgba(31, 160, 255, 0.08)" : "rgba(31, 160, 255, 0.02)")}
@@ -90,7 +85,6 @@ function FarmMap({ activeSector, sectors, hoveredSector, onHover, onSelect }) {
               strokeDasharray={isActive ? "0" : "3 3"}
               style={{ transition: 'fill 0.3s, stroke 0.3s' }}
             />
-            {/* Node dot */}
             <circle cx={s.cx} cy={s.cy} r="3"
               fill={isActive ? "#1FA0FF" : (s.online ? "#1FA0FF" : "#FFB020")}
               opacity={isActive ? 1 : 0.7}
@@ -101,7 +95,6 @@ function FarmMap({ activeSector, sectors, hoveredSector, onHover, onSelect }) {
                 <animate attributeName="opacity" from="1" to="0" dur="1.5s" repeatCount="indefinite"/>
               </circle>
             )}
-            {/* Label */}
             <text x={s.cx} y={s.cy - 12}
               fontFamily="JetBrains Mono, monospace"
               fontSize="10"
@@ -114,14 +107,12 @@ function FarmMap({ activeSector, sectors, hoveredSector, onHover, onSelect }) {
         );
       })}
 
-      {/* Compass */}
       <g transform="translate(740, 50)">
         <circle r="18" fill="rgba(11, 18, 27, 0.6)" stroke="rgba(31, 160, 255, 0.3)" strokeWidth="0.5"/>
         <path d="M 0 -10 L 3 0 L 0 10 L -3 0 Z" fill="rgba(31, 160, 255, 0.6)"/>
         <text y="-22" fontSize="9" fontFamily="JetBrains Mono, monospace" fill="rgba(230, 238, 248, 0.5)" textAnchor="middle">N</text>
       </g>
 
-      {/* Scan line */}
       <rect x="0" y="0" width="800" height="2" fill="rgba(31, 160, 255, 0.4)" opacity="0.6">
         <animate attributeName="y" from="0" to="600" dur="6s" repeatCount="indefinite"/>
       </rect>
@@ -146,7 +137,6 @@ function LiveChart({ data }) {
           <stop offset="100%" stopColor="rgba(31, 160, 255, 0)"/>
         </linearGradient>
       </defs>
-      {/* gridlines */}
       {[0.25, 0.5, 0.75].map(p => (
         <line key={p} x1="0" y1={h * p} x2={w} y2={h * p} stroke="rgba(31, 160, 255, 0.06)" strokeWidth="0.5"/>
       ))}
@@ -158,8 +148,8 @@ function LiveChart({ data }) {
   );
 }
 
-function Dashboard() {
-  const sectors = React.useMemo(() => ([
+export function Dashboard() {
+  const sectors = useMemo(() => ([
     { id: 'A-01', cx: 130, cy: 130, points: '40,60 220,55 230,200 60,210', online: true },
     { id: 'A-02', cx: 360, cy: 120, points: '240,55 480,50 490,190 250,200', online: true },
     { id: 'A-03', cx: 600, cy: 145, points: '510,55 740,70 730,220 510,210', online: true },
@@ -171,23 +161,21 @@ function Dashboard() {
     { id: 'C-03', cx: 670, cy: 480, points: '595,440 740,440 750,560 600,560', online: true },
   ]), []);
 
-  const [activeSector, setActiveSector] = React.useState(4);
-  const [hoveredSector, setHoveredSector] = React.useState(null);
-  const [chartData, setChartData] = React.useState(() =>
+  const [activeSector, setActiveSector] = useState(4);
+  const [hoveredSector, setHoveredSector] = useState(null);
+  const [chartData, setChartData] = useState(() =>
     Array.from({ length: 32 }, (_, i) => 55 + Math.sin(i / 3) * 8 + Math.random() * 6)
   );
-  const [tab, setTab] = React.useState('mapa');
+  const [tab, setTab] = useState('mapa');
 
-  // cycle active sector
-  React.useEffect(() => {
+  useEffect(() => {
     const id = setInterval(() => {
       setActiveSector(s => (s + 1) % sectors.length);
     }, 5200);
     return () => clearInterval(id);
   }, [sectors.length]);
 
-  // animate chart
-  React.useEffect(() => {
+  useEffect(() => {
     const id = setInterval(() => {
       setChartData(prev => {
         const next = [...prev.slice(1)];
@@ -202,7 +190,6 @@ function Dashboard() {
   const active = sectors[activeSector];
   const focusSector = hoveredSector != null ? sectors[hoveredSector] : active;
 
-  // derive synthetic sensor readings
   const seed = focusSector.id.charCodeAt(2) + chartData[chartData.length - 1];
   const humidity = chartData[chartData.length - 1].toFixed(1);
   const tempC = (22 + (seed % 7) - 2 + Math.sin(chartData.length / 5) * 1.2).toFixed(1);
@@ -370,7 +357,6 @@ function Dashboard() {
           </div>
         </div>
 
-        {/* Below dash: small helper row */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 20, color: 'var(--text-dimmer)', fontFamily: 'JetBrains Mono, monospace', fontSize: 11, letterSpacing: '0.06em' }}>
           <span>↑ CLIQUE NUM SETOR PARA INSPECIONAR — A SIMULAÇÃO ATUALIZA EM TEMPO REAL</span>
           <span>BUILD 0.4.21 · SAT-LINK ATIVO</span>
@@ -379,5 +365,3 @@ function Dashboard() {
     </section>
   );
 }
-
-window.Dashboard = Dashboard;

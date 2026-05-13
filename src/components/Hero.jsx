@@ -1,8 +1,9 @@
-/* Hero + Nav */
+import { useState, useEffect } from 'react';
+import { WifiIcon, ArrowRight, ArrowUpRight } from './Icons';
 
-function Nav() {
-  const [scrolled, setScrolled] = React.useState(false);
-  React.useEffect(() => {
+export function Nav() {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
@@ -36,7 +37,7 @@ function Nav() {
   );
 }
 
-function Hero() {
+export function Hero() {
   return (
     <section className="hero" id="top">
       <div className="container hero-grid">
@@ -86,7 +87,7 @@ function Hero() {
           <div className="orbit"></div>
           <div className="orbit o-2"></div>
           <div className="orbit o-3"></div>
-          <img src="assets/nozzle-product.png" alt="Bocal Mangueira Wi-Fi" />
+          <img src="/assets/nozzle-product.png" alt="Bocal Mangueira Wi-Fi" />
           <div className="hero-callouts">
             <div className="callout callout-tl">Antena · 1.2 GHz</div>
             <div className="callout callout-tr">Bocal modular</div>
@@ -98,6 +99,3 @@ function Hero() {
     </section>
   );
 }
-
-window.Nav = Nav;
-window.Hero = Hero;

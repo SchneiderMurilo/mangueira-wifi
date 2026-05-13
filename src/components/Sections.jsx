@@ -1,4 +1,4 @@
-/* Como funciona, Diferencial, Roadmap, Mercados, CTA, Footer */
+import { WifiIcon, ArrowRight, Cpu, Globe, Satellite, Bolt } from './Icons';
 
 function StepIllust1() {
   return (
@@ -9,16 +9,13 @@ function StepIllust1() {
           <stop offset="1" stopColor="#0F1824"/>
         </linearGradient>
       </defs>
-      {/* tap */}
       <rect x="40" y="40" width="14" height="60" fill="url(#tap-grad)" stroke="rgba(31,160,255,0.3)"/>
       <rect x="32" y="34" width="30" height="10" fill="url(#tap-grad)" stroke="rgba(31,160,255,0.3)"/>
       <rect x="40" y="100" width="14" height="8" fill="#1FA0FF" opacity="0.4"/>
-      {/* connector */}
       <rect x="36" y="108" width="22" height="14" rx="2" fill="#0F1824" stroke="#1FA0FF" strokeWidth="1"/>
       <circle cx="47" cy="115" r="2" fill="#1FA0FF">
         <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" repeatCount="indefinite"/>
       </circle>
-      {/* wifi waves emanating */}
       <g stroke="#1FA0FF" fill="none" strokeWidth="1.5" strokeLinecap="round" transform="translate(70, 115)">
         <path d="M 0 0 Q 30 -20, 60 0">
           <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/>
@@ -30,7 +27,6 @@ function StepIllust1() {
           <animate attributeName="opacity" values="0;1;0" dur="2s" begin="0.6s" repeatCount="indefinite"/>
         </path>
       </g>
-      {/* node */}
       <circle cx="200" cy="80" r="20" fill="#0F1824" stroke="#1FA0FF" strokeWidth="1"/>
       <circle cx="200" cy="80" r="3" fill="#1FA0FF">
         <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" repeatCount="indefinite"/>
@@ -43,7 +39,6 @@ function StepIllust1() {
 function StepIllust2() {
   return (
     <svg viewBox="0 0 280 140" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
-      {/* satellite */}
       <g transform="translate(140, 30)">
         <rect x="-8" y="-6" width="16" height="12" fill="#1FA0FF" opacity="0.8"/>
         <rect x="-22" y="-3" width="12" height="6" fill="#0F1824" stroke="#1FA0FF"/>
@@ -51,13 +46,11 @@ function StepIllust2() {
         <line x1="-22" y1="0" x2="-12" y2="0" stroke="rgba(31,160,255,0.4)"/>
         <line x1="22" y1="0" x2="12" y2="0" stroke="rgba(31,160,255,0.4)"/>
       </g>
-      {/* beams down */}
       <g stroke="#1FA0FF" strokeWidth="0.5" opacity="0.5">
         <line x1="140" y1="40" x2="60" y2="125" strokeDasharray="2 3"/>
         <line x1="140" y1="40" x2="140" y2="125" strokeDasharray="2 3"/>
         <line x1="140" y1="40" x2="220" y2="125" strokeDasharray="2 3"/>
       </g>
-      {/* pulse along beams */}
       <circle r="2" fill="#1FA0FF">
         <animate attributeName="cx" values="140;60" dur="2s" repeatCount="indefinite"/>
         <animate attributeName="cy" values="40;125" dur="2s" repeatCount="indefinite"/>
@@ -66,7 +59,6 @@ function StepIllust2() {
         <animate attributeName="cx" values="140;220" dur="2s" begin="0.7s" repeatCount="indefinite"/>
         <animate attributeName="cy" values="40;125" dur="2s" begin="0.7s" repeatCount="indefinite"/>
       </circle>
-      {/* ground nodes */}
       <circle cx="60" cy="125" r="4" fill="#0F1824" stroke="#1FA0FF"/>
       <circle cx="140" cy="125" r="4" fill="#0F1824" stroke="#1FA0FF"/>
       <circle cx="220" cy="125" r="4" fill="#0F1824" stroke="#1FA0FF"/>
@@ -85,13 +77,11 @@ function StepIllust3() {
           <stop offset="1" stopColor="#1FA0FF" stopOpacity="0"/>
         </linearGradient>
       </defs>
-      {/* nozzle */}
       <g transform="translate(60, 70)">
         <rect x="0" y="-10" width="40" height="20" rx="3" fill="#0F1824" stroke="#1FA0FF"/>
         <circle cx="40" cy="0" r="8" fill="#0F1824" stroke="#1FA0FF"/>
         <rect x="38" y="-2" width="6" height="4" fill="#1FA0FF"/>
       </g>
-      {/* spray */}
       {[0, 1, 2, 3, 4, 5, 6, 7].map(i => (
         <g key={i}>
           <circle r="2" fill="#1FA0FF" opacity="0.6">
@@ -101,10 +91,8 @@ function StepIllust3() {
           </circle>
         </g>
       ))}
-      {/* arc representing spread */}
       <path d="M 105 70 Q 180 30, 250 70" fill="none" stroke="rgba(31,160,255,0.18)" strokeDasharray="2 4"/>
       <path d="M 105 70 Q 180 110, 250 70" fill="none" stroke="rgba(31,160,255,0.18)" strokeDasharray="2 4"/>
-      {/* leaf icon */}
       <g transform="translate(240, 95)" stroke="#22D39A" fill="none">
         <path d="M -8 8 C -8 -4, 0 -8, 8 -8 C 8 4, 0 8, -8 8 Z"/>
         <path d="M -6 6 L 4 -4"/>
@@ -113,7 +101,7 @@ function StepIllust3() {
   );
 }
 
-function HowItWorks() {
+export function HowItWorks() {
   return (
     <section id="funciona">
       <div className="container">
@@ -160,7 +148,7 @@ function HowItWorks() {
   );
 }
 
-function Differential() {
+export function Differential() {
   const cards = [
     { icon: <Cpu size={18}/>, title: 'Dispositivo IoT modular', desc: 'Encaixe industrial, firmware OTA, novos sensores plugáveis sem trocar o bocal.', tag: 'EDGE · ARM Cortex-M' },
     { icon: <Globe size={18}/>, title: 'Coletor climático global', desc: 'Cada nó publica microclima local — densidade de dados que satélite sozinho não captura.', tag: '5 leituras/seg' },
@@ -198,7 +186,7 @@ function Differential() {
   );
 }
 
-function Roadmap() {
+export function Roadmap() {
   const phases = [
     {
       label: 'FASE 01 · ATIVA',
@@ -276,19 +264,15 @@ function GlobeSvg() {
         </radialGradient>
       </defs>
       <circle cx="200" cy="200" r="160" fill="url(#globe-fill)" stroke="rgba(31, 160, 255, 0.4)" strokeWidth="0.6"/>
-      {/* Latitude lines */}
       {[-60, -30, 0, 30, 60].map(lat => (
         <ellipse key={lat} cx="200" cy={200 + lat * 1.5} rx={Math.sqrt(160 * 160 - (lat * 1.5) * (lat * 1.5)) || 1} ry="6" fill="none" stroke="rgba(31, 160, 255, 0.18)" strokeWidth="0.5"/>
       ))}
-      {/* Longitude lines */}
       {[-60, -30, 0, 30, 60].map(lon => (
         <ellipse key={lon} cx="200" cy="200" rx={Math.abs(lon) * 1.5 + 10} ry="160" fill="none" stroke="rgba(31, 160, 255, 0.12)" strokeWidth="0.5"/>
       ))}
-      {/* Orbits */}
       <ellipse cx="200" cy="200" rx="200" ry="60" fill="none" stroke="rgba(31, 160, 255, 0.3)" strokeWidth="0.6" strokeDasharray="3 5" transform="rotate(-18 200 200)"/>
       <ellipse cx="200" cy="200" rx="190" ry="55" fill="none" stroke="rgba(31, 160, 255, 0.15)" strokeWidth="0.5" strokeDasharray="2 4" transform="rotate(28 200 200)"/>
 
-      {/* Satellites */}
       <g>
         <circle r="3" fill="#1FA0FF">
           <animateMotion dur="14s" repeatCount="indefinite" rotate="auto">
@@ -298,7 +282,6 @@ function GlobeSvg() {
       </g>
       <path id="orbit-a" d="M 200 200 m -200 0 a 200 60 0 1 0 400 0 a 200 60 0 1 0 -400 0" fill="none" style={{ display: 'none' }} transform="rotate(-18 200 200)"/>
 
-      {/* Hot spots */}
       {[
         { x: 150, y: 230, label: 'BR' },
         { x: 240, y: 190, label: 'US' },
@@ -321,7 +304,7 @@ function GlobeSvg() {
   );
 }
 
-function Markets() {
+export function Markets() {
   const markets = [
     { code: 'BR', name: 'Brasil', focus: 'Agronegócio e irrigação de precisão', stat: '230 M', sub: 'HA AGRÍCOLA' },
     { code: 'US', name: 'Estados Unidos', focus: 'Agricultura de precisão · midwest', stat: '405 M', sub: 'HA AGRÍCOLA' },
@@ -367,7 +350,7 @@ function Markets() {
   );
 }
 
-function CTA() {
+export function CTA() {
   return (
     <section className="cta" id="parceria">
       <div className="container cta-inner">
@@ -413,7 +396,7 @@ function CTA() {
   );
 }
 
-function Footer() {
+export function Footer() {
   return (
     <footer className="footer">
       <div className="container">
@@ -461,5 +444,3 @@ function Footer() {
     </footer>
   );
 }
-
-Object.assign(window, { HowItWorks, Differential, Roadmap, Markets, CTA, Footer });

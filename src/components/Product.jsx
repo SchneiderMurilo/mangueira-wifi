@@ -1,6 +1,6 @@
-/* Problem + Product Anatomy */
+import { Drop, Thermo, Gauge, Pin, Satellite, Sun, Valve } from './Icons';
 
-function Problem() {
+export function Problem() {
   const stats = [
     { num: '60', unit: '%', label: 'Da água utilizada na agricultura é desperdiçada por irrigação ineficiente.' },
     { num: '2,8', unit: 'bi', label: 'Pessoas vivem em áreas com escassez hídrica pelo menos um mês por ano.' },
@@ -34,7 +34,7 @@ function Problem() {
   );
 }
 
-function Anatomy() {
+export function Anatomy() {
   const specs = [
     { icon: <Drop size={18} />, name: 'Sensor de umidade do solo', desc: 'Leitura volumétrica a cada 2 minutos, calibrada por tipo de solo.', tag: 'CAP-12' },
     { icon: <Thermo size={18} />, name: 'Temperatura & microclima', desc: 'Ambiente, solo e jato — dados feedam o modelo de evapotranspiração.', tag: 'T-AMB' },
@@ -60,7 +60,7 @@ function Anatomy() {
         </div>
         <div className="anatomy">
           <div className="anatomy-image">
-            <img src="assets/nozzle-product.png" alt="Bocal" />
+            <img src="/assets/nozzle-product.png" alt="Bocal" />
           </div>
           <div className="spec-list">
             {specs.map((s, i) => (
@@ -79,6 +79,3 @@ function Anatomy() {
     </section>
   );
 }
-
-window.Problem = Problem;
-window.Anatomy = Anatomy;

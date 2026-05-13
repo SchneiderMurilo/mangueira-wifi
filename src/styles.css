@@ -1224,7 +1224,7 @@ section.tight { padding: 80px 0; }
   transform: translateY(0);
 }
 
-/* Responsive — keep desktop-first; only minor */
+/* Responsive */
 @media (max-width: 1100px) {
   .container { padding: 0 32px; }
   .hero-grid { grid-template-columns: 1fr; }
@@ -1235,4 +1235,193 @@ section.tight { padding: 80px 0; }
   .nav-links { display: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .cta-strip { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Tablet / small laptops */
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  section { padding: 64px 0; }
+  section.tight { padding: 48px 0; }
+
+  /* Nav */
+  .nav-inner { height: 60px; }
+  .nav-logo { font-size: 15px; }
+  .status-pill { display: none; }
+  .nav-cta { gap: 8px; }
+
+  /* Hero */
+  .hero { padding: 48px 0 64px; }
+  .hero-grid { gap: 32px; }
+  .hero h1 { font-size: clamp(44px, 12vw, 72px); }
+  .hero h1 .line-2 { gap: 8px; flex-wrap: wrap; }
+  .hero h1 .line-2 .big-wifi { width: 0.7em; height: 0.55em; }
+  .hero-eyebrow { font-size: 10px; padding: 5px 10px 5px 9px; }
+  .hero-tag { font-size: 11px; margin: 20px 0 18px; }
+  .hero-tag::before { width: 20px; }
+  .hero-body { font-size: 15px; margin-bottom: 28px; max-width: none; }
+  .hero-actions { flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+  .hero-actions .btn { flex: 1 1 auto; justify-content: center; }
+  .hero-meta-value { font-size: 18px; }
+  .hero-meta-label { font-size: 9px; }
+  .hero-meta-item, .hero-meta-item:not(:first-child):not(:last-child), .hero-meta-item:last-child {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .hero-meta-item:first-child { padding-left: 0; }
+  .hero-meta-item:last-child { padding-right: 0; }
+  .hero-visual { aspect-ratio: 4 / 3; }
+  .hero-visual img { width: 100%; }
+  .hero-callouts { display: none; }
+
+  /* Sections */
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  .section-title { font-size: clamp(28px, 7vw, 40px); }
+  .section-desc { font-size: 14px; max-width: none; }
+  .section-eyebrow { font-size: 10px; }
+
+  /* Problem */
+  .problem-grid { grid-template-columns: repeat(2, 1fr); }
+  .problem-cell { padding: 24px 18px; }
+  .problem-num { font-size: 44px; margin-bottom: 12px; }
+  .problem-num .unit { font-size: 16px; }
+  .problem-label { font-size: 13px; }
+
+  /* Anatomy */
+  .anatomy { gap: 28px; }
+  .anatomy-image { aspect-ratio: 3 / 4; }
+  .spec-row {
+    grid-template-columns: 44px 1fr;
+    gap: 14px;
+    padding: 16px 0;
+  }
+  .spec-row:hover { padding-left: 0; }
+  .spec-tag { grid-column: 2; padding-left: 0; margin-top: 4px; }
+  .spec-name { font-size: 15px; }
+  .spec-desc { font-size: 12px; }
+
+  /* Dashboard */
+  .dash-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 12px 14px;
+  }
+  .dash-bar-left { flex-direction: column; align-items: stretch; gap: 10px; }
+  .dash-bar-tabs { overflow-x: auto; }
+  .dash-bar-right {
+    gap: 10px;
+    font-size: 10px;
+    flex-wrap: wrap;
+  }
+  .sat-indicator { gap: 6px; }
+  .dash-body { min-height: auto; }
+  .dash-map { min-height: 320px; }
+  .map-corner { font-size: 9px; }
+  .map-legend {
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    padding: 6px 10px;
+    font-size: 9px;
+    bottom: 10px;
+  }
+  .side-section { padding: 14px 16px; }
+  .sensor-value .big { font-size: 16px; }
+  .event { grid-template-columns: 60px 1fr; font-size: 11px; }
+
+  /* Steps */
+  .step { padding: 24px 22px; }
+  .step-illust { margin: 0 -22px 22px; height: 120px; }
+  .step-title { font-size: 18px; }
+
+  /* Differential */
+  .diff-grid { grid-template-columns: 1fr; }
+  .diff-card { min-height: auto; padding: 24px 20px; }
+  .diff-icon { margin-bottom: 16px; }
+
+  /* Roadmap */
+  .phase { padding: 0; margin-bottom: 28px; }
+  .phase:last-child { margin-bottom: 0; }
+  .roadmap::before { display: none; }
+  .phase-marker { margin-bottom: 14px; }
+  .phase-title { font-size: 20px; }
+  .phase-bullets li { font-size: 13px; }
+
+  /* Markets */
+  .markets-grid { gap: 32px; }
+  .market-row {
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+    padding: 18px 16px;
+  }
+  .market-stat {
+    grid-column: 2;
+    text-align: left;
+    margin-top: 4px;
+  }
+  .market-name { font-size: 15px; }
+  .market-focus { font-size: 12px; }
+  .globe-wrap { max-width: 360px; margin: 0 auto; }
+
+  /* CTA */
+  .cta { padding: 72px 0; }
+  .cta-actions { flex-direction: column; align-items: stretch; }
+  .cta-actions .btn { justify-content: center; }
+  .cta-desc { font-size: 15px; margin-bottom: 28px; }
+  .cta-form {
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px;
+  }
+  .cta-form input { padding: 10px 12px; font-size: 14px; }
+  .cta-form button { justify-content: center; }
+  .cta-strip { grid-template-columns: 1fr 1fr; gap: 16px 20px; padding-top: 28px; }
+  .cta-strip-val { font-size: 13px; }
+
+  /* Footer */
+  .footer { padding: 40px 0 28px; }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 20px;
+    margin-bottom: 36px;
+  }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    text-align: left;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+  .nav-logo { font-size: 13px; }
+  .nav-cta .btn-sm { padding: 7px 10px; font-size: 12px; }
+
+  .hero { padding: 36px 0 56px; }
+  .hero h1 { font-size: 44px; }
+  .hero h1 .line-2 .big-wifi { width: 0.6em; height: 0.5em; }
+  .hero-meta { grid-template-columns: 1fr 1fr; gap: 14px 8px; }
+  .hero-meta-item {
+    border-right: none !important;
+    border-bottom: 1px solid var(--line);
+    padding: 0 0 12px !important;
+  }
+  .hero-meta-item:nth-last-child(-n+2) { border-bottom: none; padding-bottom: 0 !important; }
+
+  .problem-grid { grid-template-columns: 1fr; }
+  .problem-num { font-size: 38px; }
+
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-brand { grid-column: auto; }
+
+  .cta-strip { grid-template-columns: 1fr; }
+
+  .dash-bar-right span:nth-child(3) { display: none; }
 }

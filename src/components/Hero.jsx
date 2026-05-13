@@ -21,6 +21,7 @@ export function Nav() {
           <a href="#veda-rosca">Veda Rosca</a>
           <a href="#funciona">Como funciona</a>
           <a href="#mercados">Mercados</a>
+          <a href="#marte">Marte</a>
           <a href="#roadmap">Roadmap</a>
           <a href="#parceria">Parceria</a>
         </div>

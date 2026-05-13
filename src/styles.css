@@ -1311,6 +1311,202 @@ section.tight { padding: 80px 0; }
   filter: blur(40px);
 }
 
+/* ---- Mars · Programa Interplanetário ---- */
+.mars {
+  position: relative;
+  background:
+    radial-gradient(ellipse 900px 600px at 80% 20%, rgba(255, 90, 60, 0.18), transparent 65%),
+    radial-gradient(ellipse 700px 500px at 10% 80%, rgba(31, 160, 255, 0.08), transparent 60%),
+    linear-gradient(180deg, #0A0810, #04070C);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+.mars::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #FF7A48, var(--accent), transparent);
+  opacity: 0.55;
+}
+.mars-eyebrow { color: #FF8A5C; }
+.mars-eyebrow .num {
+  color: #FF8A5C;
+  background: rgba(255, 122, 72, 0.12);
+  border-color: rgba(255, 122, 72, 0.55);
+}
+
+.mars-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 56px;
+  align-items: stretch;
+}
+.mars-grid > * { min-width: 0; }
+.mars-visual { position: relative; display: flex; flex-direction: column; min-width: 0; }
+.mars-frame {
+  position: relative;
+  flex: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line-2);
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(180deg, #1A0D0A, #0A0508);
+  box-shadow:
+    0 30px 90px -20px rgba(0,0,0,0.7),
+    0 0 120px -40px rgba(255, 100, 60, 0.4);
+}
+.mars-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mars-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 35%, transparent 25%, rgba(4,7,12,0.45) 95%),
+    linear-gradient(180deg, transparent 60%, rgba(4,7,12,0.7));
+}
+.mars-tag {
+  position: absolute;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dim);
+  background: rgba(6, 11, 18, 0.78);
+  border: 1px solid var(--line-2);
+  padding: 5px 9px;
+  border-radius: 3px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.mars-tag.tg-tl { top: 18px; left: 18px; color: #FF9F75; border-color: rgba(255, 122, 72, 0.4); }
+.mars-tag.tg-tr { top: 18px; right: 18px; }
+.mars-tag.tg-bl { bottom: 72px; left: 18px; }
+.mars-tag.tg-br { bottom: 72px; right: 18px; color: var(--accent-2); border-color: var(--accent); }
+
+.mars-marquee {
+  margin-top: 12px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 8px 0;
+  overflow: hidden;
+  position: relative;
+}
+.mars-marquee::before, .mars-marquee::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+.mars-marquee::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
+.mars-marquee::after { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
+.mars-marquee-track {
+  display: flex;
+  gap: 80px;
+  white-space: nowrap;
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.16em;
+  animation: mars-marquee 38s linear infinite;
+  width: max-content;
+}
+@keyframes mars-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.mars-content { display: flex; flex-direction: column; gap: 28px; }
+.mars-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.mars-spec {
+  background: var(--bg);
+  padding: 16px 18px;
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+.mars-spec-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--line-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FF8A5C;
+  background: rgba(255, 122, 72, 0.06);
+}
+.mars-spec-name {
+  font-size: 11px;
+  color: var(--text-dim);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.mars-spec-val {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  font-family: 'JetBrains Mono', monospace;
+}
+.mars-spec-val .unit {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 10px;
+  color: var(--text-dimmer);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.mars-timeline { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.mars-phase {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 18px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+  position: relative;
+}
+.mars-phase-year {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-dimmer);
+  letter-spacing: -0.01em;
+}
+.mars-phase.active .mars-phase-year { color: #FF8A5C; }
+.mars-phase.active::before {
+  content: '';
+  position: absolute;
+  left: -14px;
+  top: 22px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FF8A5C;
+  box-shadow: 0 0 10px #FF8A5C;
+}
+.mars-phase-title { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+.mars-phase-desc { font-size: 13px; color: var(--text-dim); line-height: 1.45; }
+.mars-cta { align-self: flex-start; }
+
 /* CTA */
 .cta {
   position: relative;
@@ -1485,7 +1681,7 @@ section.tight { padding: 80px 0; }
   .hero-grid { grid-template-columns: 1fr; }
   .problem-grid, .diff-grid { grid-template-columns: repeat(2, 1fr); }
   .roadmap, .steps { grid-template-columns: 1fr; gap: 24px; }
-  .anatomy, .markets-grid, .dash-body, .leaks-grid { grid-template-columns: 1fr; }
+  .anatomy, .markets-grid, .dash-body, .leaks-grid, .mars-grid { grid-template-columns: 1fr; }
   .dash-map { min-height: 420px; border-right: none; border-bottom: 1px solid var(--line); }
   .nav-links { display: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -1651,6 +1847,25 @@ section.tight { padding: 80px 0; }
   .market-name { font-size: 15px; }
   .market-focus { font-size: 12px; }
   .globe-wrap { max-width: 360px; margin: 0 auto; }
+
+  /* Mars */
+  .mars-grid { gap: 28px; }
+  .mars-content { gap: 22px; }
+  .mars-specs { grid-template-columns: 1fr; }
+  .mars-spec { padding: 14px 16px; }
+  .mars-spec-val { font-size: 14px; }
+  .mars-phase { grid-template-columns: 64px 1fr; gap: 14px; padding: 14px 0; }
+  .mars-phase-year { font-size: 16px; }
+  .mars-phase-title { font-size: 14px; }
+  .mars-phase-desc { font-size: 12px; }
+  .mars-tag { font-size: 9px; padding: 4px 7px; }
+  .mars-tag.tg-tl, .mars-tag.tg-tr { top: 12px; }
+  .mars-tag.tg-tl { left: 12px; }
+  .mars-tag.tg-tr { right: 12px; }
+  .mars-tag.tg-bl { bottom: 60px; left: 12px; }
+  .mars-tag.tg-br { bottom: 60px; right: 12px; }
+  .mars-marquee-track { font-size: 9px; gap: 50px; }
+  .mars-cta { align-self: stretch; justify-content: center; }
 
   /* CTA */
   .cta { padding: 72px 0; }
